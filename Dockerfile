@@ -7,7 +7,7 @@ COPY . /home/cla-webui
 RUN npm install
 RUN npm run build
 
-FROM nginx:1.19.2
+FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/openeuler/nginx:1.24.0-22.03-lts-sp1 as NginxBuilder
 COPY --from=Builder /home/cla-webui/dist /usr/share/nginx/html/
 COPY ./deploy/default.conf /etc/nginx/conf.d/
 COPY ./deploy/mime.types /etc/nginx/mime.types
